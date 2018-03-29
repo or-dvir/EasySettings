@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EasySettings-lib.iml" filepath="$PROJECT_DIR$/EasySettings-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easysettings/easysettings.iml" filepath="$PROJECT_DIR$/easysettings/easysettings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easysettings-dialogs/easysettings-dialogs.iml" filepath="$PROJECT_DIR$/easysettings-dialogs/easysettings-dialogs.iml" />
+    </modules>
+  </component>
+</project>

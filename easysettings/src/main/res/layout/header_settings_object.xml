@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/easySettings_settingContainer"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:clickable="false"
+              android:focusable="false"
+              android:orientation="vertical"
+              android:padding="0dp"
+              android:paddingEnd="@dimen/settings_container_padding"
+              android:paddingStart="@dimen/settings_container_padding">
+
+    <TextView
+        android:id="@+id/textView_headerSettingsObject_title"
+        style="@style/easySettings_textView_title"
+        android:lines="1"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="?attr/colorAccent"
+        android:textStyle="bold"/>
+
+</LinearLayout>
