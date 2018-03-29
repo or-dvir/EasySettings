@@ -1,1 +1,1 @@
-# EasySettings
+# This readme file is still being edited. please feel free to browse the code for now
