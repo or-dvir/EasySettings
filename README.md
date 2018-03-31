@@ -1,3 +1,4 @@
+
 # EasySettings
 EasySettings is a library to help you add and maintain settings (AKA preferences) to your Android app.
 This library is designed to be as similar as possible to the "standard" way of creating and maintaining settings but much easier to implement and includes some extra features.
@@ -62,22 +63,22 @@ The first thing you need to do is create your settings. You can use the method `
     						
 Or you can also create it in any other way. For example:
 
-		BasicSettingsObject setting1 =
-				new BasicSettingsObject.Builder("fancy title 1")
-						.setSummary("fancy summary")
-						.build();
-		CheckBoxSettingsObject setting2 =
-				new CheckBoxSettingsObject.Builder("checkboxkey", "checkbox title", false)
-						.setSummary("checkbox summary")
-						.build();
-		SwitchSettingsObject setting3 =
-				new SwitchSettingsObject.Builder("switchkey", "switch title", true)
-						.setSummary("switch summary")
-						.build();
-		mySettingsList = new ArrayList<>();
-		mySettingsList.add(setting1);
-		mySettingsList.add(setting2);
-		mySettingsList.add(setting3);
+	BasicSettingsObject setting1 =
+			new BasicSettingsObject.Builder("fancy title 1")
+					.setSummary("fancy summary")
+					.build();
+	CheckBoxSettingsObject setting2 =
+			new CheckBoxSettingsObject.Builder("checkboxkey", "checkbox title", false)
+					.setSummary("checkbox summary")
+					.build();
+	SwitchSettingsObject setting3 =
+			new SwitchSettingsObject.Builder("switchkey", "switch title", true)
+					.setSummary("switch summary")
+					.build();
+	mySettingsList = new ArrayList<>();
+	mySettingsList.add(setting1);
+	mySettingsList.add(setting2);
+	mySettingsList.add(setting3);
 	
 			
 **Note:** This does not actually create the settings but simply creates an array of settings to be created and initialized in step 2.
@@ -95,29 +96,29 @@ you have a `SeekBarSettingsObject` with the range of 1-10 and the user sets it t
 
 A full example should look like this:
 
-	   @Override
-    	protected void onCreate(Bundle savedInstanceState)
-    	{
-	    	//this is the main activity
-	    	
-    		super.onCreate(savedInstanceState);
-    		setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+		//this is the main activity
+	   	
+    	super.onCreate(savedInstanceState);
+    	setContentView(R.layout.activity_main);
         
-       		ArrayList<SettingsObject> mySettings List = EasySettings.createSettingsArray(
-    				new BasicSettingsObject.Builder("basicSettingsKey1", "fancy title 1")
-    						.setSummary("fancy summary")
-    						.build(),
-    				new BasicSettingsObject.Builder("basicSettingsKey2","fancy title 2")
-    						.setSummary("not so fancy summary")
-    						.build(),
-    				new CheckBoxSettingsObject.Builder("cehckBoxKey", "checkbox title", false)
-    						.setSummary("checkbox summary")
-    						.build());
+       	ArrayList<SettingsObject> mySettings List = EasySettings.createSettingsArray(
+    			new BasicSettingsObject.Builder("basicSettingsKey1", "fancy title 1")
+    					.setSummary("fancy summary")
+    					.build(),
+    			new BasicSettingsObject.Builder("basicSettingsKey2","fancy title 2")
+    					.setSummary("not so fancy summary")
+    					.build(),
+    			new CheckBoxSettingsObject.Builder("cehckBoxKey", "checkbox title", false)
+    					.setSummary("checkbox summary")
+    					.build());
     
-    		EasySettings.initializeSettings(this, mySettingsList);
+    	EasySettings.initializeSettings(this, mySettingsList);
     		
-    		//rest of your code
-    	}
+    	//rest of your code
+    }
 
 
 ## 3. Creating the settings activity
@@ -156,18 +157,18 @@ In the `onCreate()` method of your **settings activity**, you will need to call 
 where `ViewGroup` is the settings container onto which the settings will be inflated. 
 A full example should look like this:
 
-	    @Override
-    	protected void onCreate(Bundle savedInstanceState)
-    	{
-	    	//this is the settings activity
+    @Override
+   	protected void onCreate(Bundle savedInstanceState)
+   	{
+    	//this is the settings activity
     	
-    		super.onCreate(savedInstanceState);
-    		setContentView(R.layout.activity_settings);
-    		LinearLayout container = findViewById(R.id.settingsContainer);
-    		settingsList = (ArrayList<SettingsObject>) getIntent().getSerializableExtra(ActivityMain.EXTRA_SETTINGS_LIST);
-    
-    		EasySettings.inflateSettingsLayout(this, container, settingsList);
-    	}
+   		super.onCreate(savedInstanceState);
+   		setContentView(R.layout.activity_settings);
+   		LinearLayout container = findViewById(R.id.settingsContainer);
+   		settingsList = (ArrayList<SettingsObject>) getIntent().getSerializableExtra(ActivityMain.EXTRA_SETTINGS_LIST);
+   
+   		EasySettings.inflateSettingsLayout(this, container, settingsList);
+   	}
 
 ## 4. Accessing the settings
 **Note:** The built-in objects **automatically** save the value to `SharedPreferences` when changed and usually there is no need to manually save them (see exceptions below and in the sample app).
@@ -178,9 +179,9 @@ A full example should look like this:
 We can also manually edit a value:
 
     EasySettings.retrieveSettingsSharedPrefs(this)
-    						.edit()
-    						.putBoolean("checkBoxKey", false)
-    						.apply();
+    		.edit()
+    		.putBoolean("checkBoxKey", false)
+    		.apply();
 
 **Warning:** We must be careful when manually editing a value like this because our `ArrayList<SettingsObject>` must also be updated in order to prevent bugs.
 
@@ -213,7 +214,9 @@ Not using this method at all will align the setting to the start of the containe
 A settings object which simply sends an event when clicked.
 
 **Type of value saved:** none (Void).
+
 **Optional features:** none.
+
 **Event:** `BasicSettingsClickEvent`
 
 If we want a `BasicSettingsObject` to save a value, this must be done manually (see "Notification Sound" setting in the sample app).
@@ -224,6 +227,7 @@ If we want a `BasicSettingsObject` to save a value, this must be done manually (
 Setting objects which contain a CheckBox/Switch
 
 **Type of value saved:** Boolean.
+
 **Optional features:**
  - `setOnText(String onText)`
  - `setOffText(String offText)`
@@ -237,7 +241,9 @@ Setting objects which contain a CheckBox/Switch
 
 ### HeaderSettingsObject
 **Type of value saved:** none (Void).
+
 **Optional features:** none.
+
 **Event:** none.
 
 ----------
@@ -247,10 +253,13 @@ A settings object which contains a `SeekBar`.
 The value of this setting will be saved **only** when the user **stops** dragging the `SeekBar` handle.
 
 **Type of value saved:** Integer.
+
 **Optional features:** none.
+
 **Events:**
  - `SeekBarSettingsProgressChangedEvent` 
  This is sent whenever the user drags the `SeekBar` handle.
+ 
  **Note:** If the user drags the handle too fast, some values will be skipped.
  - `SeekBarSettingsValueChangedEvent` 
  This is sent whenever the user lifts his finger from the `SeekBar` handle and the new value has been saved.
@@ -287,6 +296,7 @@ All dialog objects have the following **optional** features via their builders (
 A settings object that when clicked opens a dialog containing an `EditText`.
 
 **Type of value saved:** String (saved value is trimmed).
+
 **Optional features:**
  - `setHint(String hint)`
  - `setPrefillText(String prefillText)`
@@ -318,10 +328,10 @@ Multi-choice: the string values of all the elements that were selected, separate
 - If you have a **multi-choice** list, the default values **must** be created using the methods `ListSettingsObject.prepareValuesAsSingleString(String... values)` or `ListSettingsObject.prepareValuesAsSingleString(ArrayList<String> values)` like this:
 
 ```
-    String listMultiChoiceDefaultItems =
-    				ListSettingsObject.prepareValuesAsSingleString("one",
-    															   "four",
-    															   "five");
+String listMultiChoiceDefaultItems =
+		ListSettingsObject.prepareValuesAsSingleString("one",
+   								"four",
+   								"five");
 ```
 
 We do this so the library can properly read those values and mark them as "selected" by separating them  with the library's delimiter.
@@ -379,7 +389,7 @@ For example, the "Notification Sound" setting must be handled and maintained man
 	-  We **must** call `findViewById()` on the **root container of that** `SettingsObject` and **NOT** on the activity.  All `SettingsObject`s of the same type have the same ID for their summary `TextView` so rather than accessing the second or third `View`, calling `findViewById()` on the activity will return the first one that it finds. This is the proper way to do it (for the full version see the sample app):
 ```
 SettingsObject notificationSetting =
-				EasySettings.findSettingsObject(ActivityMain.SETTINGS_KEY_RINGTONE, settingsList);
+			EasySettings.findSettingsObject(ActivityMain.SETTINGS_KEY_RINGTONE, settingsList);
 
 			View root = findViewById(notificationSetting.getRootId());
 			TextView notificationSummary = root.findViewById(notificationSetting.getTextViewSummaryId());
