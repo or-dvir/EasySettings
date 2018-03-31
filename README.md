@@ -214,7 +214,9 @@ Not using this method at all will align the setting to the start of the containe
 A settings object which simply sends an event when clicked.
 
 **Type of value saved:** none (Void).
+
 **Optional features:** none.
+
 **Event:** `BasicSettingsClickEvent`
 
 If we want a `BasicSettingsObject` to save a value, this must be done manually (see "Notification Sound" setting in the sample app).
@@ -225,6 +227,7 @@ If we want a `BasicSettingsObject` to save a value, this must be done manually (
 Setting objects which contain a CheckBox/Switch
 
 **Type of value saved:** Boolean.
+
 **Optional features:**
  - `setOnText(String onText)`
  - `setOffText(String offText)`
@@ -238,7 +241,9 @@ Setting objects which contain a CheckBox/Switch
 
 ### HeaderSettingsObject
 **Type of value saved:** none (Void).
+
 **Optional features:** none.
+
 **Event:** none.
 
 ----------
@@ -248,10 +253,13 @@ A settings object which contains a `SeekBar`.
 The value of this setting will be saved **only** when the user **stops** dragging the `SeekBar` handle.
 
 **Type of value saved:** Integer.
+
 **Optional features:** none.
+
 **Events:**
  - `SeekBarSettingsProgressChangedEvent` 
  This is sent whenever the user drags the `SeekBar` handle.
+ 
  **Note:** If the user drags the handle too fast, some values will be skipped.
  - `SeekBarSettingsValueChangedEvent` 
  This is sent whenever the user lifts his finger from the `SeekBar` handle and the new value has been saved.
@@ -288,6 +296,7 @@ All dialog objects have the following **optional** features via their builders (
 A settings object that when clicked opens a dialog containing an `EditText`.
 
 **Type of value saved:** String (saved value is trimmed).
+
 **Optional features:**
  - `setHint(String hint)`
  - `setPrefillText(String prefillText)`
@@ -321,8 +330,8 @@ Multi-choice: the string values of all the elements that were selected, separate
 ```
 String listMultiChoiceDefaultItems =
 		ListSettingsObject.prepareValuesAsSingleString("one",
-   													   "four",
-   													   "five");
+   								"four",
+   								"five");
 ```
 
 We do this so the library can properly read those values and mark them as "selected" by separating them  with the library's delimiter.
