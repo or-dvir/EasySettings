@@ -1,1 +1,1 @@
-include ':app', ':easysettings', ':easysettings-dialogs'
+include ':sample', ':easysettings', ':easysettings-dialogs'

@@ -30,6 +30,8 @@ public class ActivitySettings extends AppCompatActivity
 {
 	private static final int REQUEST_CODE_NOTIFICATION_PICKER = 1000;
 	public static final String INTENT_EXTRA_RESULT = "INTENT_EXTRA_RESULT";
+	public static final String DEFAULT_NOTIFICATION_SUMMARY = "Silent";
+	public static final String SETTINGS_RINGTONE_SILENT_VALUE = "";
 
 	private Toast mToast;
 	private ArrayList<SettingsObject> settingsList;
@@ -72,13 +74,23 @@ public class ActivitySettings extends AppCompatActivity
 			View root = findViewById(notificationSetting.getRootId());
 			tvNotificationToneSummary = root.findViewById(notificationSetting.getTextViewSummaryId());
 
-			Uri notificationUri = Uri.parse(EasySettings.retrieveSettingsSharedPrefs(this)
+			String notificationUriAsString = EasySettings.retrieveSettingsSharedPrefs(this)
 														.getString(ActivityMain.SETTINGS_KEY_RINGTONE,
-																   ActivityMain.SETTINGS_RINGTONE_SILENT_VALUE));
+																   SETTINGS_RINGTONE_SILENT_VALUE);
+			//silent was chosen
+			if(notificationUriAsString.equals(SETTINGS_RINGTONE_SILENT_VALUE))
+			{
+				tvNotificationToneSummary.setText(DEFAULT_NOTIFICATION_SUMMARY);
+			}
 
-			Ringtone ringtone = RingtoneManager.getRingtone(this, notificationUri);
-			String soundTitle = ringtone.getTitle(this);
-			tvNotificationToneSummary.setText(soundTitle);
+			else
+			{
+				Uri notificationUri = Uri.parse(notificationUriAsString);
+
+				Ringtone ringtone = RingtoneManager.getRingtone(this, notificationUri);
+				String soundTitle = ringtone.getTitle(this);
+				tvNotificationToneSummary.setText(soundTitle);
+			}
 		}
 	}
 
@@ -96,7 +108,7 @@ public class ActivitySettings extends AppCompatActivity
 						.putString(ActivityMain.SETTINGS_KEY_RINGTONE,
 								   //if notificationToneUri is null, it means "silent"
 								   //was chosen.
-								   notificationToneUri == null ? ActivityMain.SETTINGS_RINGTONE_SILENT_VALUE
+								   notificationToneUri == null ? SETTINGS_RINGTONE_SILENT_VALUE
 															   : notificationToneUri.toString())
 						.apply();
 
@@ -105,7 +117,7 @@ public class ActivitySettings extends AppCompatActivity
 			//"silent" was chosen
 			if(notificationToneUri == null)
 			{
-				 soundTitle = ActivityMain.DEFAULT_NOTIFICATION_SUMMARY;
+				 soundTitle = DEFAULT_NOTIFICATION_SUMMARY;
 			}
 
 			else
@@ -163,7 +175,7 @@ public class ActivitySettings extends AppCompatActivity
 		{
 			String uriAsString = EasySettings.retrieveSettingsSharedPrefs(this)
 											 .getString(ActivityMain.SETTINGS_KEY_RINGTONE,
-														ActivityMain.SETTINGS_RINGTONE_SILENT_VALUE);
+														SETTINGS_RINGTONE_SILENT_VALUE);
 
 			Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
 			intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true)
@@ -171,7 +183,7 @@ public class ActivitySettings extends AppCompatActivity
 				  .putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION)
 				  .putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "");
 
-			if(uriAsString.equals(ActivityMain.SETTINGS_RINGTONE_SILENT_VALUE))
+			if(uriAsString.equals(SETTINGS_RINGTONE_SILENT_VALUE))
 			{
 				intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, 0);
 			}

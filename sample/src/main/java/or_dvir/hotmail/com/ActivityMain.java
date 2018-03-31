@@ -2,9 +2,6 @@ package or_dvir.hotmail.com;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,8 +22,6 @@ public class ActivityMain extends AppCompatActivity
 	private static final int REQUEST_CODE_ACTIVITY_SETTINGS = 1001;
 
 	public static final String EXTRA_SETTINGS_LIST = "EXTRA_SETTINGS_LIST";
-	public static final String SETTINGS_RINGTONE_SILENT_VALUE = "";
-	public static final String DEFAULT_NOTIFICATION_SUMMARY = "silent";
 	public static final String DEFAULT_VALUE_EDIT_TEXT = "default value";
 
 	private static final String LIST_DIALOG_ONE = "one";
@@ -65,26 +60,6 @@ public class ActivityMain extends AppCompatActivity
 		SharedPreferences settingsSharedPrefs = EasySettings.retrieveSettingsSharedPrefs(this);
 
 		String editTextPrefill = settingsSharedPrefs.getString(SETTINGS_KEY_EDIT_TEXT, DEFAULT_VALUE_EDIT_TEXT);
-		String notificationUri = settingsSharedPrefs.getString(SETTINGS_KEY_RINGTONE, null);
-
-		String notificationSummary = DEFAULT_NOTIFICATION_SUMMARY;
-
-		//todo if (notificationUri != null) then it means the value already exists.
-		//todo in this case we decided that an empty string means "silent" was chosen
-		//todo (see onActivityResult() method in ActivitySettings class)
-		if (notificationUri != null &&
-			notificationUri.isEmpty() == false)
-		{
-			Ringtone ringtone = RingtoneManager.getRingtone(this, Uri.parse(notificationUri));
-			notificationSummary = ringtone.getTitle(this);
-		}
-
-		//todo remember that it's possible the value does not yet exists
-		//todo e.g. first time the app is opened
-		else
-		{
-			//todo do something
-		}
 
 		//todo in the case of "ListSettingsObject",
 		//todo the default object must be obtained using this method
@@ -109,7 +84,11 @@ public class ActivityMain extends AppCompatActivity
 						.addDivider()
 						.build(),
 				new BasicSettingsObject.Builder(SETTINGS_KEY_RINGTONE,"Notification Sound")
-						.setSummary(notificationSummary)
+						//todo NOTE:
+						//todo for teaching purposes, the actual summary value is set in ActivitySettings.
+						//todo however we must provide a non-empty value here or otherwise the
+						//todo visibility of the summary TextView will be set to View.GONE
+						.setSummary("aaa")
 						.setIcon(null)
 						.addDivider()
 						.build(),
@@ -169,7 +148,6 @@ public class ActivityMain extends AppCompatActivity
 						.build());
 
 		//todo could also do it this way:
-//		mySettingsList = new ArrayList<>();
 //		BasicSettingsObject setting1 =
 //				new BasicSettingsObject.Builder("fancy title 1")
 //						.setSummary("fancy summary")
@@ -208,6 +186,7 @@ public class ActivityMain extends AppCompatActivity
 	{
 		//todo we must update the the settings list associated with this
 		//todo activity with the updated settings list.
+		//todo because the list this activity holds is separate from the one in ActivitySettings
 		if (requestCode == REQUEST_CODE_ACTIVITY_SETTINGS &&
 			resultCode == RESULT_OK)
 		{

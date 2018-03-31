@@ -118,7 +118,11 @@ public abstract class SettingsObject<V> implements Serializable
 	/**
 	 *
 	 * @return the id of the drawable which is being used as this {@link SettingsObject}'s
-	 * icon, or null if this {@link SettingsObject} does not have an icon
+	 * icon,<br><br/>
+	 * or {@link SettingsObject#NO_ICON_DONT_ALIGN} if this {@link SettingsObject}
+	 * does not have an icon and does NOT need to be aligned with other {@link SettingsObject}s,<br><br/>
+	 * or null if this {@link SettingsObject} does not have an icon but it DOES
+	 * need to be aligned with other {@link SettingsObject}s
 	 */
 	@Nullable @DrawableRes
 	public Integer getIconDrawableId()
@@ -197,7 +201,7 @@ public abstract class SettingsObject<V> implements Serializable
 	 *
 	 * @return whether or not this {@link SettingsObject} is displaying
 	 * its' value as the summary.<br></br>
-	 * if ture, the value that will be shown is obtained from {@link SettingsObject#getValueHumanReadable()}
+	 * if true, the value that will be shown is obtained from {@link SettingsObject#getValueHumanReadable()}
 	 */
 	public boolean useValueAsSummary()
 	{
@@ -206,7 +210,7 @@ public abstract class SettingsObject<V> implements Serializable
 
 	/**
 	 * sets the given value to this settings object.
-	 * NOTE: this only sets the value but does NOT save it in the apps' {@link SharedPreferences}.
+	 * NOTE: this only sets the value of this object but does NOT save it in the apps' {@link SharedPreferences}.
 	 * if in addition you would also like the value to be saved to the apps'
 	 * settings, use {@link #setValueAndSaveSetting(Context, Object)}
 	 * @param value

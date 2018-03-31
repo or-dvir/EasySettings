@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <!-- if you already have an app with settings and you'd like to switch to this library,
+    define this string (with this EXACT NAME) and the value of your own shared preferences file-->
+    <string name="sharedPreferencesSettingsName">your own shared preferences file name</string>
+</resources>

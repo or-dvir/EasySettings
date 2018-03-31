@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">EasySettings</string>
+
+<!--
+    WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!!
+	WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!!
+	WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!!
+	WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!!
+	do NOT change these values!!! they are being used as id's!!!
+-->
+    <string name="sharedPreferencesSettingsName">com.hotmail.or_dvir.easysettings.settings</string>
 </resources>

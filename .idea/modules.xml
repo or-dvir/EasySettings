@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EasySettings-lib.iml" filepath="$PROJECT_DIR$/EasySettings-lib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/easysettings/easysettings.iml" filepath="$PROJECT_DIR$/easysettings/easysettings.iml" />
       <module fileurl="file://$PROJECT_DIR$/easysettings-dialogs/easysettings-dialogs.iml" filepath="$PROJECT_DIR$/easysettings-dialogs/easysettings-dialogs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
     </modules>
   </component>
 </project>

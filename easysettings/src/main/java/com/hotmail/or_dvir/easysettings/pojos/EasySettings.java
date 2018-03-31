@@ -19,19 +19,8 @@ import java.util.Set;
 @SuppressWarnings("PointlessBooleanExpression")
 public class EasySettings
 {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////
-	//WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! 			//
-	//WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! 			//
-	//WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! 			//
-	//WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! 			//
-	//do NOT change these values!!! they are being used as id's!!!										//
-	private static final String SHARED_PREFERENCE_NAME = "com.hotmail.or_dvir.easysettings.settings";	//
-	//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	private static String customSharedPreferenceName = null;
-
 	/**
-	 * a helper method for creating an array of {@link SettingsObject}s for your app.
+	 * a helper method for creating an {@link ArrayList} of {@link SettingsObject}s for your app.
 	 * @param settingsObjects
 	 * @return
 	 */
@@ -41,18 +30,6 @@ public class EasySettings
 		Collections.addAll(array, settingsObjects);
 
 		return array;
-	}
-
-	/**
-	 * WARNING!!! WARNING!!! WARNING!!!<br><br/>
-	 * ONLY use this method if you are using this library on a pre-existing app which
-	 * already has its own {@link SharedPreferences} to save its' settings,
-	 * and you'd like to keep using it instead of this library's default {@link SharedPreferences} file
-	 * @param name the name of the {@link SharedPreferences} to be used by this library
-	 */
-	public static void setCustomSharedPreferenceName(String name)
-	{
-		customSharedPreferenceName = name;
 	}
 
 	/**
@@ -236,14 +213,7 @@ public class EasySettings
 	 */
 	public static SharedPreferences retrieveSettingsSharedPrefs(Context context)
 	{
-		String name = SHARED_PREFERENCE_NAME;
-
-		if(customSharedPreferenceName != null)
-		{
-			name = customSharedPreferenceName;
-		}
-
-		return context.getSharedPreferences(name,
-											Context.MODE_PRIVATE);
+		String name = context.getString(R.string.sharedPreferencesSettingsName);
+		return context.getSharedPreferences(name, Context.MODE_PRIVATE);
 	}
 }

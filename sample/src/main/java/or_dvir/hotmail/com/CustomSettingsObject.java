@@ -58,9 +58,15 @@ public class CustomSettingsObject extends SettingsObject<Void> implements Serial
 		return null;
 	}
 
+	//todo VERY IMPORTANT!!!!
+	//todo when extending SettingsObject, you MUST override this method and call
+	//todo super.initializeViews(root)!
 	@Override
 	public void initializeViews(View root)
 	{
+		//todo VERY IMPORTANT!!!!
+		//todo you MUST call the super method in order to initialize basic views
+		//todo such as the title TextView
 	    super.initializeViews(root);
 
 	    Button btn = root.findViewById(R.id.button);
