@@ -16,12 +16,12 @@ In your root build.gradle, at the end of repositories, add this:
 
 For the basic module, add this as a dependency in your app's build.gradle:
 
-    implementation 'com.github.or-dvir:EasySettings:[latest realease]'
-    implementation 'com.github.or-dvir.EasySettings:EasySettings:[latest realease]'
+    implementation 'com.github.or-dvir.EasySettings:easysettings-basic:[latest release]'
 
 For the dialogs module, also add this:
 
-    implementation 'com.github.or-dvir:EasySettings:1.0'
+    implementation 'com.github.or-dvir.EasySettings:easysettings-dialogs:[latest release]'
+
 
 
 # Why Use This Library?
