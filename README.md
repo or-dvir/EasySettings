@@ -6,7 +6,23 @@ This library is designed to be as similar as possible to the "standard" way of c
 ***ADD GIF OF SAMPLE APP HERE***
 
 # Gradle Dependency
-ADD JITPACK.IO GRADLE DEPENDENCY INSTRUCTIONS
+In your root build.gradle, at the end of repositories, add this:
+
+    repositories {
+        ...
+    	maven {url "https://jitpack.io" }
+	
+	}
+
+For the basic module, add this as a dependency in your app's build.gradle:
+
+    implementation 'com.github.or-dvir:EasySettings:[latest realease]'
+    implementation 'com.github.or-dvir.EasySettings:EasySettings:[latest realease]'
+
+For the dialogs module, also add this:
+
+    implementation 'com.github.or-dvir:EasySettings:1.0'
+
 
 # Why Use This Library?
 Here are some of the drawbacks of using the Google's "standard" way ([as described here](https://developer.android.com/guide/topics/ui/settings.html)):

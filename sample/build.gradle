@@ -27,7 +27,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation project(':easysettings')
+    implementation project(':easysettings-basic')
     implementation project(':easysettings-dialogs')
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'

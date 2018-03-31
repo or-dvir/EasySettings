@@ -8,7 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/easysettings" />
+            <option value="$PROJECT_DIR$/easysettings-basic" />
             <option value="$PROJECT_DIR$/easysettings-dialogs" />
             <option value="$PROJECT_DIR$/sample" />
           </set>

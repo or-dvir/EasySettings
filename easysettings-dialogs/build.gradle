@@ -22,5 +22,5 @@ android {
 
 dependencies {
     api ('com.afollestad.material-dialogs:core:0.9.6.0')
-    implementation (project(':easysettings'))
+    implementation (project(':easysettings-basic'))
 }

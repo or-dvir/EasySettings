@@ -1,1 +1,1 @@
-include ':sample', ':easysettings', ':easysettings-dialogs'
+include ':sample', ':easysettings-basic', ':easysettings-dialogs'
