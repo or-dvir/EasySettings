@@ -179,9 +179,9 @@ A full example should look like this:
 We can also manually edit a value:
 
     EasySettings.retrieveSettingsSharedPrefs(this)
-    			.edit()
-    			.putBoolean("checkBoxKey", false)
-    			.apply();
+    		.edit()
+    		.putBoolean("checkBoxKey", false)
+    		.apply();
 
 **Warning:** We must be careful when manually editing a value like this because our `ArrayList<SettingsObject>` must also be updated in order to prevent bugs.
 
