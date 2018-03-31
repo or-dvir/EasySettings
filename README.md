@@ -18,7 +18,7 @@ For the basic module, add this as a dependency in your app's build.gradle:
 
     implementation 'com.github.or-dvir.EasySettings:easysettings-basic:[latest release]'
 
-For the dialogs module, also add this:
+For the dialogs module, **which depends on the basic module**, also add this:
 
     implementation 'com.github.or-dvir.EasySettings:easysettings-dialogs:[latest release]'
 
