@@ -3,7 +3,7 @@
 EasySettings is a library to help you add and maintain settings (AKA preferences) to your Android app.
 This library is designed to be as similar as possible to the "standard" way of creating and maintaining settings but much easier to implement and includes some extra features.
 
-***ADD GIF OF SAMPLE APP HERE***
+<img src="https://github.com/or-dvir/EasySettings/blob/master/gifs/gif%201.gif" width="240" height="427"/> <img src="https://github.com/or-dvir/EasySettings/blob/master/gifs/gif%202.gif" width="240" height="427"/> <img src="https://github.com/or-dvir/EasySettings/blob/master/gifs/gif%203.gif" width="240" height="427"/>
 
 # Gradle Dependency
 In your root build.gradle, at the end of repositories, add this:
