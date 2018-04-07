@@ -59,8 +59,6 @@ public class ActivityMain extends AppCompatActivity
 
 		SharedPreferences settingsSharedPrefs = EasySettings.retrieveSettingsSharedPrefs(this);
 
-		String editTextPrefill = settingsSharedPrefs.getString(SETTINGS_KEY_EDIT_TEXT, DEFAULT_VALUE_EDIT_TEXT);
-
 		//todo in the case of "ListSettingsObject",
 		//todo the default object must be obtained using this method
 		String listMultiChoiceDefaultItems =
@@ -116,7 +114,8 @@ public class ActivityMain extends AppCompatActivity
 						.setDialogContent("enter new value here")
 						.setDialogTitle("my dialog title")
 						.setHint("i am a hint")
-						.setPrefillText(editTextPrefill)
+						.setPrefillText("pre-fill text")
+						.setUseValueAsPrefillText() //todo overrides the value set above!
 						.setIcon(null)
 						.setNegativeBtnText("cancel")
 						.setNeutralBtnText("neutral")

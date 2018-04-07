@@ -316,6 +316,9 @@ A settings object that when clicked opens a dialog containing an `EditText`.
 **Optional features:**
  - `setHint(String hint)`
  - `setPrefillText(String prefillText)`
+ - `setUseValueAsPrefillText()`
+  If used, this will override  `setSummary(String summary)`
+ 
 
 **Events:**
  - `EditTextSettingsNeutralButtonClickedEvent`

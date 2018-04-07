@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.hotmail.or_dvir.easysettings.enums.ESettingsTypes;
+import com.hotmail.or_dvir.easysettings.pojos.SettingsObject;
 import com.hotmail.or_dvir.easysettings_dialogs.R;
 import com.hotmail.or_dvir.easysettings_dialogs.events.EditTextSettingsValueChangedEvent;
 import org.greenrobot.eventbus.EventBus;
@@ -22,12 +23,14 @@ public class EditTextSettingsObject extends DialogSettingsObject<EditTextSetting
 {
 	private String hint;
 	private String prefillText;
+	private boolean useValueAsPrefillText;
 
     private EditTextSettingsObject(Builder builder)
     {
         super(builder);
         this.hint = builder.hint;
         this.prefillText = builder.prefillText;
+		this.useValueAsPrefillText = builder.useValueAsPrefillText;
 
 		//todo if you don't want to use the builder pattern,
 		//todo you can also use a regular constructor
@@ -82,7 +85,6 @@ public class EditTextSettingsObject extends DialogSettingsObject<EditTextSetting
         //todo because we are using the R.layout.layout basic_settings_object,
         //todo we need to call the super method here to initialize the title and summary text views.
         //todo if you are making a completely custom layout here, no need to call the super method
-        String test = getValue();
 		super.initializeViews(root);
 
         //todo optional initialization of the summary:
@@ -134,7 +136,12 @@ public class EditTextSettingsObject extends DialogSettingsObject<EditTextSetting
 			localHint = getHint();
 		}
 
-		if(getPrefillText().isEmpty() == false)
+		if(useValueAsPrefillText)
+		{
+			localPrefillText = getValueHumanReadable();
+		}
+
+		else if(getPrefillText().isEmpty() == false)
 		{
 			localPrefillText = getPrefillText();
 		}
@@ -179,6 +186,7 @@ public class EditTextSettingsObject extends DialogSettingsObject<EditTextSetting
     {
     	private String hint = "";
 		private String prefillText = "";
+		private boolean useValueAsPrefillText = false;
 
 		/**
 		 *
@@ -234,6 +242,19 @@ public class EditTextSettingsObject extends DialogSettingsObject<EditTextSetting
 			this.prefillText = prefillText;
 			return this;
 		}
+
+		/**
+		 * if this method is called, the value of this {@link EditTextSettingsObject}
+		 * will be used as the pre-fill text of the {@link android.widget.EditText} inside the dialog.
+		 * this method overrides the value set in {@link SettingsObject.Builder#setUseValueAsSummary()}
+		 * @return
+		 */
+		public Builder setUseValueAsPrefillText()
+		{
+			this.useValueAsPrefillText = true;
+			return this;
+		}
+
 
 		@Override
         public EditTextSettingsObject build()
