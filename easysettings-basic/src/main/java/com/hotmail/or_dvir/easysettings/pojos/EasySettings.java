@@ -186,7 +186,8 @@ public class EasySettings
 				int bottomPadding = individualSettingsContainer.getPaddingBottom();
 				int topPadding = individualSettingsContainer.getPaddingTop();
 
-				if(settingsList.get(i-1).hasDivider())
+				if(i == 0 ||
+				   settingsList.get(i-1).hasDivider())
 				{
 					topPadding = settingsPadding;
 				}

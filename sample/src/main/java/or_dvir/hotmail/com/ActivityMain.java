@@ -76,6 +76,8 @@ public class ActivityMain extends AppCompatActivity
 		//todo note that there might be some more methods available for the below builders.
 		//todo please check docs/original code for all available options
 		mySettingsList = EasySettings.createSettingsArray(
+				new HeaderSettingsObject.Builder("no more index out of bound")
+						.build(),
 				new BasicSettingsObject.Builder(SETTINGS_KEY_BASIC, "fancy title 1")
 						.setSummary("fancy summary")
 						.setIcon(null)
