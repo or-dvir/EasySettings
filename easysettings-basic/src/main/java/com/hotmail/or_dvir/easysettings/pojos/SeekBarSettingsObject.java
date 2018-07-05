@@ -36,7 +36,8 @@ public class SeekBarSettingsObject extends SettingsObject<Integer> implements Se
 			  builder.hasDivider(),
 			  builder.getType(),
 			  builder.getImageViewIconId(),
-			  builder.getIconDrawableId());
+			  builder.getIconDrawableId(),
+			  builder.getIconDrawable());
 
 		this.minValue = builder.minValue;
 		this.maxValue = builder.maxValue;

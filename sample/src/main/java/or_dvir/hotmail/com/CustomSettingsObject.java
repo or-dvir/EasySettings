@@ -28,7 +28,8 @@ public class CustomSettingsObject extends SettingsObject<Void> implements Serial
 			  builder.hasDivider(),
 			  builder.getType(),
 			  builder.getImageViewIconId(),
-			  builder.getIconDrawableId());
+			  builder.getIconDrawableId(),
+			  builder.getIconDrawable());
 	}
 
 	public int incrementNumber()

@@ -27,7 +27,8 @@ public class BasicSettingsObject extends SettingsObject<Void> implements Seriali
 			  builder.hasDivider(),
 			  builder.getType(),
 			  builder.getImageViewIconId(),
-			  builder.getIconDrawableId());
+			  builder.getIconDrawableId(),
+			  builder.getIconDrawable());
 	}
 
 	@Override

@@ -76,11 +76,17 @@ public class ActivityMain extends AppCompatActivity
 		//todo note that there might be some more methods available for the below builders.
 		//todo please check docs/original code for all available options
 		mySettingsList = EasySettings.createSettingsArray(
-				new HeaderSettingsObject.Builder("no more index out of bound")
+				new HeaderSettingsObject.Builder("sample header")
 						.build(),
 				new BasicSettingsObject.Builder(SETTINGS_KEY_BASIC, "fancy title 1")
 						.setSummary("fancy summary")
 						.setIcon(null)
+						//todo NOTE:
+						//todo because of the way this sample app is written,
+						//todo this method will throw a "NotSerializableException".
+						//todo however, this method will work if the settings are managed in a way
+						//todo which does not require serialization
+//						.setIconDrawable(getResources().getDrawable(R.drawable.ic_launcher_round))
 						.addDivider()
 						.build(),
 				new BasicSettingsObject.Builder(SETTINGS_KEY_RINGTONE,"Notification Sound")

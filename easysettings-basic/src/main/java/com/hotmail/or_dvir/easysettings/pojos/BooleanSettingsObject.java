@@ -46,7 +46,8 @@ public abstract class BooleanSettingsObject extends SettingsObject<Boolean> impl
 			  builder.hasDivider(),
 			  builder.getType(),
 			  builder.getImageViewIconId(),
-			  builder.getIconDrawableId());
+			  builder.getIconDrawableId(),
+			  builder.getIconDrawable());
 
 		this.onText = builder.getOnText();
 		this.offText = builder.getOffText();

@@ -3,6 +3,7 @@ package com.hotmail.or_dvir.easysettings.pojos;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -48,6 +49,8 @@ public abstract class SettingsObject<V> implements Serializable
 	private boolean addDivider;					//
 	@Nullable @DrawableRes						//
 	private Integer iconDrawableId;				//
+	@Nullable									//
+	private Drawable iconDrawable;				//
 	//////////////////////////////////////////////
 
 	@IdRes
@@ -75,6 +78,9 @@ public abstract class SettingsObject<V> implements Serializable
 	 * @param iconDrawableId  the id of the {@link android.graphics.drawable.Drawable}
 	 *                        which is being used as the icon
 	 *                        for this {@link SettingsObject}
+	 * @param  iconDrawable the {@link android.graphics.drawable.Drawable}
+	 *                        which is being used as the icon
+	 *                        for this {@link SettingsObject}
 	 */
 	public SettingsObject(String key,
 						  String title,
@@ -86,7 +92,8 @@ public abstract class SettingsObject<V> implements Serializable
 						  boolean addDivider,
 						  ESettingsTypes type,
 						  @Nullable @IdRes Integer imageViewIconId,
-						  @Nullable @DrawableRes Integer iconDrawableId)
+						  @Nullable @DrawableRes Integer iconDrawableId,
+						  @Nullable Drawable iconDrawable)
 	{
 		this.key = key;
 		this.title = title;
@@ -99,6 +106,7 @@ public abstract class SettingsObject<V> implements Serializable
 		this.type = type;
 		this.imageViewIconId = imageViewIconId;
 		this.iconDrawableId = iconDrawableId;
+		this.iconDrawable = iconDrawable;
 	}
 
 	/**
@@ -128,6 +136,16 @@ public abstract class SettingsObject<V> implements Serializable
 	public Integer getIconDrawableId()
 	{
 		return iconDrawableId;
+	}
+
+	/**
+	 * @return same as {@link #getIconDrawableId()} but returns {@link Drawable} instead of Id.
+	 * returns null if this {@link SettingsObject} does not have an icon
+	 */
+	@Nullable
+	public Drawable getIconDrawable()
+	{
+		return iconDrawable;
 	}
 
 	/**
@@ -393,10 +411,15 @@ public abstract class SettingsObject<V> implements Serializable
 		{
 			ImageView ivIcon = root.findViewById(imageViewIconId);
 
+			if(iconDrawable != null)
+			{
+				ivIcon.setImageDrawable(iconDrawable);
+			}
+
 			//the user specifically set the value to null
 			//which means they want the settings object
 			//to align as if it has an icon
-			if(iconDrawableId == null)
+			else if(iconDrawableId == null)
 			{
 				ivIcon.setImageDrawable(null);
 			}
@@ -443,6 +466,7 @@ public abstract class SettingsObject<V> implements Serializable
 		private String summary;												//
 		@Nullable @DrawableRes                     							//
 		private Integer iconDrawableId = NO_ICON_DONT_ALIGN;				//
+		private Drawable iconDrawable = null;   						    //
 		private boolean useValueAsSummary = false;							//
 		private boolean addDivider = false;									//
 		//////////////////////////////////////////////////////////////////////
@@ -548,6 +572,11 @@ public abstract class SettingsObject<V> implements Serializable
 			}
 		}
 
+		public Drawable getIconDrawable()
+		{
+			return iconDrawable;
+		}
+
 		@Nullable @DrawableRes
 		public Integer getIconDrawableId()
 		{
@@ -611,12 +640,24 @@ public abstract class SettingsObject<V> implements Serializable
 		 * @param iconId the id of the drawable to be used as an icon for
 		 *               this {@link SettingsObject}. if you don't want
 		 *         		 to display an icon, but still want this {@link SettingsObject}
-		 *         		 to align with the rest of the settings, pass null
+		 *         		 to align with the rest of the settings, pass null.<br><br/>
+		 *         		 NOTE: this value overrides {@link #setIconDrawable(Drawable)}
 		 * @return
 		 */
 		public B setIcon(@Nullable @DrawableRes Integer iconId)
 		{
 			this.iconDrawableId = iconId;
+			return (B) this;
+		}
+
+		/**
+		 * same as {@link #setIcon(Integer)} but takes a {@link Drawable}
+		 * instead of drawable Id.<br><br/>
+		 * NOTE: this value is overridden by {@link #setIcon(Integer)}
+		 */
+		public B setIconDrawable(@Nullable Drawable iconDrawable)
+		{
+			this.iconDrawable = iconDrawable;
 			return (B) this;
 		}
 

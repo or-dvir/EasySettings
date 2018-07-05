@@ -26,7 +26,8 @@ public class HeaderSettingsObject extends SettingsObject<Void> implements Serial
 			  builder.hasDivider(),
 			  builder.getType(),
 			  builder.getImageViewIconId(),
-			  builder.getIconDrawableId());
+			  builder.getIconDrawableId(),
+			  builder.getIconDrawable());
 	}
 
 	@Override

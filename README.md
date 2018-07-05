@@ -220,11 +220,15 @@ All objects in this library extend `SettingsObject` and all of them have the fol
  - `setIcon(@Nullable @DrawableRes Integer iconId)`.
 Not using this method at all will align the setting to the start of the container.
  Passing null means there is no icon, but the setting will be aligned as if it has one. This is useful if we have some settings which have icons and some that don't and they should be visually aligned.
+ If used, this will override `setIcon(@Nullable Drawable iconDrawable)`
+ - `setIcon(@Nullable Drawable iconDrawable)`.
+ same as `setIcon(@Nullable @DrawableRes Integer iconId)`, except it takes a `Drawable`.
+ NOTE: this `Drawable` is overridden by `setIcon(@Nullable @DrawableRes Integer iconId)`
  - `setSummary(String summary)`
  - `setUseValueAsSummary()` 
  If used, this will override  `setSummary(String summary)`
  - `addDivider()`
-
+kkkkk
 
 ### BasicSettingsObject
 A settings object which simply sends an event when clicked.

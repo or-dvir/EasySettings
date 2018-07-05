@@ -42,7 +42,8 @@ public abstract class DialogSettingsObject<B extends DialogSettingsObject.Builde
 			  builder.hasDivider(),
 			  builder.getType(),
 			  builder.getImageViewIconId(),
-			  builder.getIconDrawableId());
+			  builder.getIconDrawableId(),
+			  builder.getIconDrawable());
 
 		this.dialogTitle = builder.dialogTitle;
 		this.dialogContent = builder.dialogContent;
