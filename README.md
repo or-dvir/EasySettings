@@ -228,7 +228,6 @@ Not using this method at all will align the setting to the start of the containe
  - `setUseValueAsSummary()` 
  If used, this will override  `setSummary(String summary)`
  - `addDivider()`
-kkkkk
 
 ### BasicSettingsObject
 A settings object which simply sends an event when clicked.
