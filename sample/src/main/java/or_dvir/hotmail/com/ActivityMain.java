@@ -19,6 +19,11 @@ import java.util.ArrayList;
 
 public class ActivityMain extends AppCompatActivity
 {
+
+	//todo next version try to remove dependencies from other libraries!!!
+	//todo but if you still need the dependency, change BOTH LIBRARY MODULS gradle file
+	//todo from "Api" to either "implementation" or "compileOnly"
+
 	private static final int REQUEST_CODE_ACTIVITY_SETTINGS = 1001;
 
 	public static final String EXTRA_SETTINGS_LIST = "EXTRA_SETTINGS_LIST";
@@ -80,10 +85,9 @@ public class ActivityMain extends AppCompatActivity
 						.build(),
 				new BasicSettingsObject.Builder(SETTINGS_KEY_BASIC, "fancy title 1")
 						.setSummary("fancy summary")
-						.setIcon(null)
 						//todo NOTE:
 						//todo because of the way this sample app is written,
-						//todo this method will throw a "NotSerializableException".
+						//todo this method will throw a NotSerializableException.
 						//todo however, this method will work if the settings are managed in a way
 						//todo which does not require serialization
 //						.setIconDrawable(getResources().getDrawable(R.drawable.ic_launcher_round))
