@@ -47,7 +47,7 @@ public class ListSettingsObject extends DialogSettingsObject<ListSettingsObject.
 	private boolean isMultiChoice;
     private Integer[] selectedItemsIndices;
 
-    private ListSettingsObject(Builder builder)
+    public ListSettingsObject(Builder builder)
     {
         super(builder);
         this.listItems = builder.listItems;
